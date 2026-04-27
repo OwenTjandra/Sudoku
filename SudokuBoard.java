@@ -10,9 +10,9 @@ public class SudokuBoard {
       try {
          Scanner input = new Scanner(new File(fileName));
          int row = 0;                                  // FIX: declare row
-         while (input.hasNextLine() && row < 9) {
+         while (input.hasNextLine() && row < board.length) {
             String line = input.nextLine();
-            for (int col = 0; col < 9 && col < line.length(); col++) {
+            for (int col = 0; col < board[row].length && col < line.length(); col++) {
                board[row][col] = line.charAt(col);
             }
             row++;
@@ -26,9 +26,9 @@ public class SudokuBoard {
       String divider = "+-------+-------+-------+\n"; 
       String result = divider;
 
-      for (int row = 0; row < 9; row++) {
+      for (int row = 0; row < board.length; row++) {
          result += "| ";
-         for (int col = 0; col < 9; col++) {      
+         for (int col = 0; col < board[row].length; col++) {      
             char c = board[row][col];
             if (c == '.') {
                result += ". ";
